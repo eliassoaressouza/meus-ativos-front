@@ -1,0 +1,31 @@
+<layout>
+  <div class="corpo-login">
+    <div class="corpo-interno-login">
+      <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="box">
+          <mat-card-header>
+            <mat-card-title>Sign In</mat-card-title>
+          </mat-card-header>
+          <form [formGroup]="loginForm" class="example-form" (submit)="login()">
+            <mat-card-content>
+              <div class="inputs_">
+                <input formControlName="usuario" placeholder="EMAIL"  />
+              </div>
+              <div class="inputs_">
+                <input formControlName="senha" placeholder="SENHA"  />
+              </div>
+            </mat-card-content>
+            <button
+              type="submit"
+              mat-stroked-button
+              color="accent"
+              class="btn-block"
+            >
+              Sign-in
+            </button>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</layout>
