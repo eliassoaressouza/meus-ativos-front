@@ -8,6 +8,7 @@ export abstract class ServicoProtegidoTemplate {
 
 
 
+
     constructor() {
 
         this.createHeaders();
