@@ -1,6 +1,12 @@
 <mat-toolbar>
-  <span>Meus ativos</span>
-</mat-toolbar>
-<ng-content>
 
-</ng-content>
+  <button mat-button [matMenuTriggerFor]="belowMenu">Menu</button>
+  <mat-menu #belowMenu="matMenu" yPosition="below">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+  <span class="titulo" >Meus ativos</span>
+</mat-toolbar>
+<div class="conteudo">
+  <ng-content> </ng-content>
+</div>

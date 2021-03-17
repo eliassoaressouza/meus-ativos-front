@@ -1,0 +1,31 @@
+<form [formGroup]="ativoForm" (submit)="SalvarAdicionar()">
+  <table>
+    <tr>
+      <td *ngIf="ativo.nome != 'ADICIONAR'">
+        <input formControlName="nome" />
+      </td>
+    </tr>
+    <tr>
+      <td *ngIf="ativo.nome != 'ADICIONAR'">Descrição:</td>
+    </tr>
+    <tr>
+      <td>
+        <textarea
+          formControlName="descricao"
+          *ngIf="ativo.nome != 'ADICIONAR'"
+          rows="5"
+          cols="21"
+        >
+        </textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button type="submit" mat-button color="primary">
+          {{ labelBotaoSalvar }}
+        </button>
+        <button mat-button (click)="ConfirmarExcluir()" color="primary" *ngIf="ativo._id" >Excluir</button>
+      </td>
+    </tr>
+  </table>
+</form>

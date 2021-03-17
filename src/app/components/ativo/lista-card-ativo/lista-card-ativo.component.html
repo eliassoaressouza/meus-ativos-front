@@ -1,0 +1,20 @@
+<mat-grid-list cols="8" rowHeight="1:1" *ngIf="listaAtivos" >
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="1"
+    [style.background]="'lightblue'"
+    *ngFor="let ativo of listaAtivos"
+  >
+    <card-ativo [ativo]="ativo"> </card-ativo>
+  </mat-grid-tile>
+  <mat-grid-tile
+  [colspan]="1"
+  [rowspan]="1"
+  [style.background]="'lightblue'"
+
+>
+  <card-ativo [ativo]="null"> </card-ativo>
+</mat-grid-tile>
+
+
+</mat-grid-list>
