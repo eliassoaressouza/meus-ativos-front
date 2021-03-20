@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/core/auth/auth.service";
 import { UsuarioModel } from "src/app/models/usuario.model";
+import { ProgressService } from "src/app/shared/progress/progress.service";
+import { LoadingIconService } from "src/app/shared/utils/loading-icon.service";
 
 @Component({
   selector: "login",
@@ -10,34 +12,37 @@ import { UsuarioModel } from "src/app/models/usuario.model";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
-
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private authService: AuthService,
-    private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      usuario: ['eliassoaressouza@gmail.com', Validators.required],
-      senha: ['123456', Validators.required]
-  });
-
-
+      usuario: ["", Validators.required],
+      senha: ["", Validators.required],
+    });
   }
   login() {
-    const usuario = this.loginForm.get('usuario').value;
-    const senha = this.loginForm.get('senha').value;
+    LoadingIconService.show();
+    const usuario = this.loginForm.get("usuario").value;
+    const senha = this.loginForm.get("senha").value;
 
-    this.authService
-        .authenticate(usuario, senha)
-        .subscribe(
-            () => this.router.navigate(['home']),
-            err => {
-                console.log(err);
-                this.loginForm.reset();
+    this.authService.authenticate(usuario, senha).subscribe(
+      () => {
+        this.router.navigate(["home"]);
+        LoadingIconService.show();
+      },
+      (err) => {
+        console.log(err);
+        this.loginForm.reset();
 
-                alert('Invalid email ou senha');
-            }
-        );
+        alert("Invalid email ou senha");
+        LoadingIconService.hide()
+      }
+    );
   }
 }

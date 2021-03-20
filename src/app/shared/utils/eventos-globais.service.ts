@@ -18,5 +18,6 @@ export class EventosGlobaisService {
 }
 export enum NomeEvento {
   AtualizarListaAtivos = 'AtualizarListaAtivos',
+  ProgressAtivo='ProgressAtivo'
 
 }

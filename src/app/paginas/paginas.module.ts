@@ -10,6 +10,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { AtivoModule } from "../components/ativo/ativo.module";
+import { IconeLoadingDefaultModule } from "../shared/progress/icones/icone-loading-default.module";
 @NgModule({
   declarations: [HomeComponent, LayoutComponent, LoginComponent],
   imports: [
@@ -21,7 +22,8 @@ import { AtivoModule } from "../components/ativo/ativo.module";
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
-    AtivoModule
+    AtivoModule,
+    IconeLoadingDefaultModule,
   ],
   exports: [HomeComponent, LayoutComponent, LoginComponent],
 })

@@ -1,0 +1,14 @@
+.wrapper {
+  line-height: calc(100vh - 20px);
+  height: calc(100vh - 20px);
+  text-align: center;
+
+}
+.inner {
+
+  padding: 12px;
+  display: inline;
+}
+.conteudo {
+  display: none;
+}
