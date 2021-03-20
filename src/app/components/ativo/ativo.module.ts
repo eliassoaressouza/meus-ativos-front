@@ -9,6 +9,7 @@ import { CardAtivoComponent } from './lista-card-ativo/card-ativo/card-ativo.com
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [  AtivoComponent,  ListaCardAtivoComponent, CardAtivoComponent ],
   imports: [
@@ -19,7 +20,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatGridListModule,
     MatExpansionModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ],
   exports:[ AtivoComponent]
 })

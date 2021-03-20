@@ -1,3 +1,15 @@
 .btn-salvar {
  margin-right: 5px;
 }
+
+.inputnumber{
+  width: 30px;
+  margin-left: 18px;
+}
+.inputNome{
+  width: 80px;
+}
+
+.formCard{
+  padding: 15px
+}

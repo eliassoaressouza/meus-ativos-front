@@ -1,8 +1,15 @@
-<form [formGroup]="ativoForm">
+<form [formGroup]="ativoForm" class="formCard" >
   <table>
     <tr>
-      <td *ngIf="ativo.nome != 'ADICIONAR'">
-        <input formControlName="nome" />
+      <td>
+        Nome:
+        <input class="inputNome" matInput formControlName="nome" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Qtd:
+        <input class="inputnumber" matInput type="number" formControlName="quantidade" />
       </td>
     </tr>
     <tr>
@@ -11,9 +18,10 @@
     <tr>
       <td>
         <textarea
+          matInput
           formControlName="descricao"
           *ngIf="ativo.nome != 'ADICIONAR'"
-          rows="5"
+          rows="3"
           cols="21"
         >
         </textarea>
@@ -21,11 +29,24 @@
     </tr>
     <tr>
       <td>
-        <button type="button" class="btn-salvar" (click)="SalvarAdicionar()" mat-raised-button color="primary">
+        <button
+          type="button"
+          class="btn-salvar"
+          (click)="SalvarAdicionar()"
+          mat-raised-button
+          color="primary"
+        >
           {{ labelBotaoSalvar }}
         </button>
 
-        <button mat-raised-button (click)="Excluir()" color="warn" *ngIf="ativo._id" >Excluir</button>
+        <button
+          mat-raised-button
+          (click)="Excluir()"
+          color="warn"
+          *ngIf="ativo._id"
+        >
+          Excluir
+        </button>
       </td>
     </tr>
   </table>

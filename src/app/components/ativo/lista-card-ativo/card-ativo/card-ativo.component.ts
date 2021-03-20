@@ -32,6 +32,7 @@ export class CardAtivoComponent implements OnInit {
     this.ativoForm = this.formBuilder.group({
       nome: [this.ativo.nome, Validators.required],
       descricao: [this.ativo.descricao, Validators.required],
+      quantidade: [this.ativo.quantidade],
       _id: [this.ativo._id],
     });
 
