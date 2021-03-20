@@ -1,5 +1,10 @@
+.iconmenu{
+  margin-right: 5px;
+  font-size: 58px;
+
+}
 .conteudo{
-  padding: 10 0 0 0;
+  padding: 20 0 0 0;
 }
 .titulo{
   text-align: center;
@@ -7,3 +12,4 @@
 .spacer {
   flex:  auto;
 }
+

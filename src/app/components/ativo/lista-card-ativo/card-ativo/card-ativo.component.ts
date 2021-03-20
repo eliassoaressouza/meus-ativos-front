@@ -47,6 +47,7 @@ export class CardAtivoComponent implements OnInit {
     let ativoSalvar = new AtivoModel();
 
     ativoSalvar.nome = this.ativoForm.controls["nome"].value;
+    ativoSalvar.quantidade = this.ativoForm.controls["quantidade"].value;
     ativoSalvar.descricao = this.ativoForm.controls["descricao"].value;
     ativoSalvar._id = this.ativoForm.controls["_id"].value;
     if (ativoSalvar.nome) {
@@ -54,7 +55,7 @@ export class CardAtivoComponent implements OnInit {
       if (ativoSalvar._id) {
         this.ativoService.editar(ativoSalvar).subscribe(
           (resp) => {
-            console.log(resp);
+
             LoadingIconService.hide();
             EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
             MensagemService.sucesso("Ativo Alterado com sucesso!");
@@ -67,7 +68,7 @@ export class CardAtivoComponent implements OnInit {
       } else {
         this.ativoService.salvar(ativoSalvar).subscribe(
           (resp) => {
-            console.log(resp);
+
             LoadingIconService.hide();
             this.ativoForm.reset();
             EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
@@ -102,7 +103,7 @@ export class CardAtivoComponent implements OnInit {
     LoadingIconService.show();
     this.ativoService.excluir(id).subscribe(
       (resp) => {
-        console.log(resp);
+
         LoadingIconService.hide();
         MensagemService.sucesso("Ativo Excluido com sucesso!");
         EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();

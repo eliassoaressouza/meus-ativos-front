@@ -13,6 +13,7 @@ import { AtivoModule } from "../components/ativo/ativo.module";
 import { IconeLoadingDefaultModule } from "../shared/progress/icones/icone-loading-default.module";
 import { AlertCustomModule } from "../shared/alert-custom/alert-custom.module";
 import { DialogConfirmModule } from "../shared/dialog-confirm/dialog-confirm.module";
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [HomeComponent, LayoutComponent, LoginComponent],
   imports: [
@@ -27,7 +28,8 @@ import { DialogConfirmModule } from "../shared/dialog-confirm/dialog-confirm.mod
     AtivoModule,
     IconeLoadingDefaultModule,
     AlertCustomModule,
-    DialogConfirmModule
+    DialogConfirmModule,
+    MatExpansionModule
   ],
   exports: [HomeComponent, LayoutComponent, LoginComponent],
 })
