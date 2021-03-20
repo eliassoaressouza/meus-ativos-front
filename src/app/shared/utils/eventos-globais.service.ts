@@ -18,6 +18,8 @@ export class EventosGlobaisService {
 }
 export enum NomeEvento {
   AtualizarListaAtivos = 'AtualizarListaAtivos',
-  ProgressAtivo='ProgressAtivo'
+  ProgressAtivo='ProgressAtivo',
+  loading_icon_default='loading-icon-default',
+  abrirModalMensagem='abrirModalMensagem'
 
 }

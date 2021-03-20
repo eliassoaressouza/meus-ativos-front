@@ -5,6 +5,7 @@ import {
   EventosGlobaisService,
   NomeEvento,
 } from "src/app/shared/utils/eventos-globais.service";
+import { LoadingIconService } from "src/app/shared/utils/loading-icon.service";
 
 @Component({
   selector: "ativo",
@@ -25,8 +26,12 @@ export class AtivoComponent implements OnInit {
   }
 
   obterLista() {
+    LoadingIconService.show();
     this.ativoService.obter().subscribe((resp) => {
       this.listaAtivos = resp;
+      LoadingIconService.hide();
+    },erro=>{
+      LoadingIconService.hide();
     });
   }
 }

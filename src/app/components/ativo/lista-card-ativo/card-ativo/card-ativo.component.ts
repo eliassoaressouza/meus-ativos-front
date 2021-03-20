@@ -6,7 +6,9 @@ import {
   EventosGlobaisService,
   NomeEvento,
 } from "src/app/shared/utils/eventos-globais.service";
-import { AtivoModule } from "../../ativo.module";
+import { LoadingIconService } from "src/app/shared/utils/loading-icon.service";
+import { MensagemService } from "src/app/shared/utils/modais.service";
+
 
 @Component({
   selector: "card-ativo",
@@ -41,6 +43,7 @@ export class CardAtivoComponent implements OnInit {
     this.labelBotaoSalvar = this.ativo._id ? "Editar" : "Salvar";
   }
   SalvarAdicionar() {
+    LoadingIconService.show();
     let ativoSalvar = new AtivoModel();
 
     ativoSalvar.nome = this.ativoForm.controls["nome"].value;
@@ -50,33 +53,43 @@ export class CardAtivoComponent implements OnInit {
       this.ativoService.editar(ativoSalvar).subscribe(
         (resp) => {
           console.log(resp);
+          LoadingIconService.hide();
+          EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
+          MensagemService.sucesso('Ativo Alterado com sucesso!');
         },
         (error) => {
           console.log(error);
+          LoadingIconService.hide();
         }
       );
     } else {
       this.ativoService.salvar(ativoSalvar).subscribe(
         (resp) => {
           console.log(resp);
+          LoadingIconService.hide();
+          this.ativoForm.reset();
+          EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
+          MensagemService.sucesso('Ativo Salvo com sucesso!');
         },
         (error) => {
           console.log(error);
+          LoadingIconService.hide();
         }
       );
     }
-    this.ativoForm.reset();
-    EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
   }
   ConfirmarExcluir() {
-    const id=this.ativoForm.controls["_id"].value;
-    console.log('**********************: '+id)
+    const id = this.ativoForm.controls["_id"].value;
+    LoadingIconService.show();
     this.ativoService.excluir(id).subscribe(
       (resp) => {
         console.log(resp);
+        LoadingIconService.hide();
+        MensagemService.sucesso('Ativo Excluido com sucesso!');
       },
       (error) => {
         console.log(error);
+        LoadingIconService.hide();
       }
     );
   }

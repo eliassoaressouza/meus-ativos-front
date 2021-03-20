@@ -1,14 +1,14 @@
-import { EventosGlobaisService } from "./eventos-globais.service";
+import { EventosGlobaisService, NomeEvento } from "./eventos-globais.service";
 
 export class LoadingIconService {
   public static show(loadingAscync: LoadingAscync = null) {
-    EventosGlobaisService.get("loading-icon-default").emit(
+    EventosGlobaisService.get(NomeEvento.loading_icon_default).emit(
       this.LoadingNaoAscync(stateEnum.show)
     );
   }
 
   public static hide(loadingAscync: LoadingAscync = null) {
-    EventosGlobaisService.get("loading-icon-default").emit(
+    EventosGlobaisService.get(NomeEvento.loading_icon_default).emit(
       this.LoadingNaoAscync(stateEnum.hide)
     );
   }
@@ -19,7 +19,7 @@ export class LoadingIconService {
    * @param loadingAscync
    */
   public static ascyncLoading(loadingAscync: ILoadingAscync) {
-    EventosGlobaisService.get("loading-icon-default").emit(
+    EventosGlobaisService.get(NomeEvento.loading_icon_default).emit(
       loadingAscync as LoadingAscync
     );
   }

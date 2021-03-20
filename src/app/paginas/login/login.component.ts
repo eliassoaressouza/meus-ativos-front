@@ -5,6 +5,7 @@ import { AuthService } from "src/app/core/auth/auth.service";
 import { UsuarioModel } from "src/app/models/usuario.model";
 import { ProgressService } from "src/app/shared/progress/progress.service";
 import { LoadingIconService } from "src/app/shared/utils/loading-icon.service";
+import { MensagemService } from "src/app/shared/utils/modais.service";
 
 @Component({
   selector: "login",
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
       () => {
         this.router.navigate(["home"]);
         LoadingIconService.show();
+        MensagemService.sucesso('Usuario logado!');
       },
       (err) => {
         console.log(err);

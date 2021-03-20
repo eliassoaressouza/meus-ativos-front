@@ -8,7 +8,7 @@ import {
 } from "@angular/animations";
 
 
-import { EventosGlobaisService } from "../../utils/eventos-globais.service";
+import { EventosGlobaisService, NomeEvento } from "../../utils/eventos-globais.service";
 import { LoadingAscync } from "../../utils/loading-icon.service";
 
 @Component({
@@ -72,7 +72,7 @@ export class IconeLoadingDefault implements OnInit {
 
   ngOnInit() {
     if (this.global == true) {
-      EventosGlobaisService.get("loading-icon-default").subscribe(
+      EventosGlobaisService.get(NomeEvento.loading_icon_default).subscribe(
         (loadingParams: LoadingAscync) => {
           this.alterarEstado(loadingParams.nomeEvento, loadingParams.state);
         }
