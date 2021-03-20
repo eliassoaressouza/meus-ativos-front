@@ -4,3 +4,6 @@
 .titulo{
   text-align: center;
 }
+.spacer {
+  flex:  auto;
+}

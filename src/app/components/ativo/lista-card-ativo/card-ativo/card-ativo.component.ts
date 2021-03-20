@@ -10,7 +10,6 @@ import {
 import { LoadingIconService } from "src/app/shared/utils/loading-icon.service";
 import { MensagemService } from "src/app/shared/utils/modais.service";
 
-
 @Component({
   selector: "card-ativo",
   templateUrl: "./card-ativo.component.html",
@@ -44,51 +43,57 @@ export class CardAtivoComponent implements OnInit {
     this.labelBotaoSalvar = this.ativo._id ? "Editar" : "Salvar";
   }
   SalvarAdicionar() {
-    LoadingIconService.show();
     let ativoSalvar = new AtivoModel();
 
     ativoSalvar.nome = this.ativoForm.controls["nome"].value;
     ativoSalvar.descricao = this.ativoForm.controls["descricao"].value;
     ativoSalvar._id = this.ativoForm.controls["_id"].value;
-    if (ativoSalvar._id) {
-      this.ativoService.editar(ativoSalvar).subscribe(
-        (resp) => {
-          console.log(resp);
-          LoadingIconService.hide();
-          EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
-          MensagemService.sucesso('Ativo Alterado com sucesso!');
-        },
-        (error) => {
-          console.log(error);
-          LoadingIconService.hide();
-        }
-      );
+    if (ativoSalvar.nome) {
+      LoadingIconService.show();
+      if (ativoSalvar._id) {
+        this.ativoService.editar(ativoSalvar).subscribe(
+          (resp) => {
+            console.log(resp);
+            LoadingIconService.hide();
+            EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
+            MensagemService.sucesso("Ativo Alterado com sucesso!");
+          },
+          (error) => {
+            console.log(error);
+            LoadingIconService.hide();
+          }
+        );
+      } else {
+        this.ativoService.salvar(ativoSalvar).subscribe(
+          (resp) => {
+            console.log(resp);
+            LoadingIconService.hide();
+            this.ativoForm.reset();
+            EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
+            MensagemService.sucesso("Ativo Salvo com sucesso!");
+          },
+          (error) => {
+            console.log(error);
+            LoadingIconService.hide();
+          }
+        );
+      }
     } else {
-      this.ativoService.salvar(ativoSalvar).subscribe(
-        (resp) => {
-          console.log(resp);
-          LoadingIconService.hide();
-          this.ativoForm.reset();
-          EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
-          MensagemService.sucesso('Ativo Salvo com sucesso!');
-        },
-        (error) => {
-          console.log(error);
-          LoadingIconService.hide();
-        }
-      );
+      MensagemService.erro("Obrigatório nome ativo!");
     }
   }
 
-
-  Excluir(){
+  Excluir() {
     DialogMsgService.abrirModalMsgConfirm({
-      titulo:"Atenção",
-      textoMensagem:"Deseja excluir o ativo "+this.ativo.nome.toLocaleUpperCase()  +" selecionado?",
+      titulo: "Atenção",
+      textoMensagem:
+        "Deseja excluir o ativo " +
+        this.ativo.nome.toLocaleUpperCase() +
+        " selecionado?",
       callBackConfirmacao: () => {
         this.ConfirmarExcluir();
-      }
-    })
+      },
+    });
   }
 
   ConfirmarExcluir() {
@@ -98,7 +103,7 @@ export class CardAtivoComponent implements OnInit {
       (resp) => {
         console.log(resp);
         LoadingIconService.hide();
-        MensagemService.sucesso('Ativo Excluido com sucesso!');
+        MensagemService.sucesso("Ativo Excluido com sucesso!");
         EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
       },
       (error) => {

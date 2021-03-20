@@ -21,10 +21,11 @@
     </tr>
     <tr>
       <td>
-        <button type="button" (click)="SalvarAdicionar()" mat-button color="primary">
+        <button type="button" class="btn-salvar" (click)="SalvarAdicionar()" mat-raised-button color="primary">
           {{ labelBotaoSalvar }}
         </button>
-        <button mat-button (click)="Excluir()" color="primary" *ngIf="ativo._id" >Excluir</button>
+
+        <button mat-raised-button (click)="Excluir()" color="warn" *ngIf="ativo._id" >Excluir</button>
       </td>
     </tr>
   </table>
