@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AtivoService } from "src/app/core/http/ativo.service";
 import { AtivoModel } from "src/app/models/ativo.model";
+import { DialogMsgService } from "src/app/shared/dialog-confirm/dialog-msg.service";
 import {
   EventosGlobaisService,
   NomeEvento,
@@ -78,6 +79,18 @@ export class CardAtivoComponent implements OnInit {
       );
     }
   }
+
+
+  Excluir(){
+    DialogMsgService.abrirModalMsgConfirm({
+      titulo:"Atenção",
+      textoMensagem:"Deseja excluir o ativo "+this.ativo.nome.toLocaleUpperCase()  +" selecionado?",
+      callBackConfirmacao: () => {
+        this.ConfirmarExcluir();
+      }
+    })
+  }
+
   ConfirmarExcluir() {
     const id = this.ativoForm.controls["_id"].value;
     LoadingIconService.show();
@@ -86,6 +99,7 @@ export class CardAtivoComponent implements OnInit {
         console.log(resp);
         LoadingIconService.hide();
         MensagemService.sucesso('Ativo Excluido com sucesso!');
+        EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
       },
       (error) => {
         console.log(error);
