@@ -20,6 +20,6 @@ export enum NomeEvento {
   AtualizarListaAtivos = 'AtualizarListaAtivos',
   ProgressAtivo='ProgressAtivo',
   loading_icon_default='loading-icon-default',
-  abrirModalMensagem='abrirModalMensagem'
-
+  abrirModalMensagem='abrirModalMensagem',
+  AbrirModalMsgConfirm = 'AbrirModalMsgConfirm',
 }

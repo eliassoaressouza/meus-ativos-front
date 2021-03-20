@@ -12,6 +12,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { AtivoModule } from "../components/ativo/ativo.module";
 import { IconeLoadingDefaultModule } from "../shared/progress/icones/icone-loading-default.module";
 import { AlertCustomModule } from "../shared/alert-custom/alert-custom.module";
+import { DialogConfirmModule } from "../shared/dialog-confirm/dialog-confirm.module";
 @NgModule({
   declarations: [HomeComponent, LayoutComponent, LoginComponent],
   imports: [
@@ -25,7 +26,8 @@ import { AlertCustomModule } from "../shared/alert-custom/alert-custom.module";
     MatToolbarModule,
     AtivoModule,
     IconeLoadingDefaultModule,
-    AlertCustomModule
+    AlertCustomModule,
+    DialogConfirmModule
   ],
   exports: [HomeComponent, LayoutComponent, LoginComponent],
 })

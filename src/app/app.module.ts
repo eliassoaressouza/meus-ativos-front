@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PaginasModule } from "./paginas/paginas.module";
 import { HttpClientModule } from "@angular/common/http";
+import { DialogConfirmModule } from "./shared/dialog-confirm/dialog-confirm.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +14,7 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     PaginasModule,
-
+    DialogConfirmModule,
     BrowserAnimationsModule,
     HttpClientModule,
   ],

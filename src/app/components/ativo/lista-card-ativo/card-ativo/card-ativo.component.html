@@ -1,4 +1,4 @@
-<form [formGroup]="ativoForm" (submit)="SalvarAdicionar()">
+<form [formGroup]="ativoForm">
   <table>
     <tr>
       <td *ngIf="ativo.nome != 'ADICIONAR'">
@@ -21,10 +21,10 @@
     </tr>
     <tr>
       <td>
-        <button type="submit" mat-button color="primary">
+        <button type="button" (click)="SalvarAdicionar()" mat-button color="primary">
           {{ labelBotaoSalvar }}
         </button>
-        <button mat-button (click)="ConfirmarExcluir()" color="primary" *ngIf="ativo._id" >Excluir</button>
+        <button mat-button (click)="Excluir()" color="primary" *ngIf="ativo._id" >Excluir</button>
       </td>
     </tr>
   </table>
