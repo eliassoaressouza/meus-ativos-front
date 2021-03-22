@@ -1,3 +1,6 @@
+.content{
+  padding: 5px;
+}
 .iconmenu{
   margin-right: 5px;
   font-size: 58px;
@@ -12,4 +15,3 @@
 .spacer {
   flex:  auto;
 }
-

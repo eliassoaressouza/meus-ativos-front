@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { HomeComponent } from "./home/home.component";
-import { LayoutComponent } from "./layout/layout.component";
 import { LoginComponent } from "./login/login.component";
 import { MatCardModule } from "@angular/material/card";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -13,10 +12,19 @@ import { AtivoModule } from "../components/ativo/ativo.module";
 import { IconeLoadingDefaultModule } from "../shared/progress/icones/icone-loading-default.module";
 import { AlertCustomModule } from "../shared/alert-custom/alert-custom.module";
 import { DialogConfirmModule } from "../shared/dialog-confirm/dialog-confirm.module";
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from "@angular/material/expansion";
+import { ClassificacaoComponent } from "./classificacao/classificacao.component";
+import { MasterComponent } from "./master/master.component";
+import { AppRoutingModule } from "../app-routing.module";
 @NgModule({
-  declarations: [HomeComponent, LayoutComponent, LoginComponent],
+  declarations: [
+    HomeComponent,
+    LoginComponent,
+    ClassificacaoComponent,
+    MasterComponent,
+  ],
   imports: [
+    AppRoutingModule,
     CommonModule,
     BrowserModule,
     MatCardModule,
@@ -29,8 +37,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
     IconeLoadingDefaultModule,
     AlertCustomModule,
     DialogConfirmModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
-  exports: [HomeComponent, LayoutComponent, LoginComponent],
+  exports: [
+    HomeComponent,
+    LoginComponent,
+    ClassificacaoComponent,
+    MasterComponent,
+  ],
 })
 export class PaginasModule {}

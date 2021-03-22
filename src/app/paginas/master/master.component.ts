@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Usuario } from 'src/app/core/usuario/usuario';
 import { UsuarioService } from 'src/app/core/usuario/usuario.service';
-import { UsuarioModel } from 'src/app/models/usuario.model';
 
 @Component({
-  selector: 'layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css']
+  selector: 'app-master',
+  templateUrl: './master.component.html',
+  styleUrls: ['./master.component.css']
 })
-export class LayoutComponent implements OnInit {
+export class MasterComponent implements OnInit {
 
   usuario$: Observable<Usuario>;
-  constructor( private usuarioService: UsuarioService) {
+  constructor( private usuarioService: UsuarioService,
+    private router: Router) {
     this.usuario$ = usuarioService.getUser();
 
   }
