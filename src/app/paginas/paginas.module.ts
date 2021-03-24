@@ -13,16 +13,12 @@ import { IconeLoadingDefaultModule } from "../shared/progress/icones/icone-loadi
 import { AlertCustomModule } from "../shared/alert-custom/alert-custom.module";
 import { DialogConfirmModule } from "../shared/dialog-confirm/dialog-confirm.module";
 import { MatExpansionModule } from "@angular/material/expansion";
-import { ClassificacaoComponent } from "./classificacao/classificacao.component";
 import { MasterComponent } from "./master/master.component";
 import { AppRoutingModule } from "../app-routing.module";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatFormFieldModule } from "@angular/material/form-field";
 @NgModule({
-  declarations: [
-    HomeComponent,
-    LoginComponent,
-    ClassificacaoComponent,
-    MasterComponent,
-  ],
+  declarations: [HomeComponent, LoginComponent, MasterComponent],
   imports: [
     AppRoutingModule,
     CommonModule,
@@ -38,12 +34,9 @@ import { AppRoutingModule } from "../app-routing.module";
     AlertCustomModule,
     DialogConfirmModule,
     MatExpansionModule,
+    MatTabsModule,
+    MatFormFieldModule,
   ],
-  exports: [
-    HomeComponent,
-    LoginComponent,
-    ClassificacaoComponent,
-    MasterComponent,
-  ],
+  exports: [HomeComponent, LoginComponent, MasterComponent],
 })
 export class PaginasModule {}

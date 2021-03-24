@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { ClassificacaoComponent } from "./components/classificacao/classificacao.component";
 import { AuthGuard } from "./core/auth/auth.guard";
-import { ClassificacaoComponent } from "./paginas/classificacao/classificacao.component";
 import { HomeComponent } from "./paginas/home/home.component";
 import { LoginComponent } from "./paginas/login/login.component";
 import { MasterComponent } from "./paginas/master/master.component";
