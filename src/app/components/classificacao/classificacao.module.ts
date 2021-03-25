@@ -9,8 +9,10 @@ import {MatInputModule} from '@angular/material/input';
 import { ContainerModule } from 'src/app/shared/container/container.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
+import { ClassListaComponent } from './class-lista/class-lista.component';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
-  declarations: [ClassificacaoComponent, ClassFormComponent],
+  declarations: [ClassificacaoComponent, ClassFormComponent, ClassListaComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -20,7 +22,8 @@ import {MatListModule} from '@angular/material/list';
     MatInputModule,
     ContainerModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatTableModule
   ],
   exports:[ClassificacaoComponent]
 })

@@ -22,4 +22,6 @@ export enum NomeEvento {
   loading_icon_default='loading-icon-default',
   abrirModalMensagem='abrirModalMensagem',
   AbrirModalMsgConfirm = 'AbrirModalMsgConfirm',
+  AtualizarListaClassificacao = 'AtualizarListaClassificacao',
+  EditarClassificacao = 'EditarClassificacao',
 }
