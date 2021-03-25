@@ -10,6 +10,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { TextMaskModule } from 'angular2-text-mask';
 @NgModule({
   declarations: [  AtivoComponent,  ListaCardAtivoComponent, CardAtivoComponent ],
   imports: [
@@ -21,7 +22,8 @@ import {MatInputModule} from '@angular/material/input';
     MatGridListModule,
     MatExpansionModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    TextMaskModule
   ],
   exports:[ AtivoComponent]
 })

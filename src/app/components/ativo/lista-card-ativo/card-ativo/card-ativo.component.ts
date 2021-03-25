@@ -43,6 +43,7 @@ export class CardAtivoComponent implements OnInit {
 
     this.labelBotaoSalvar = this.ativo._id ? "Editar" : "Salvar";
   }
+
   SalvarAdicionar() {
     let ativoSalvar = new AtivoModel();
 

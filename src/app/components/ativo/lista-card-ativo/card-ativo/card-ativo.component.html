@@ -3,7 +3,7 @@
     <tr>
       <td>
         Nome:
-        <input class="inputNome" matInput formControlName="nome" />
+        <input class="inputNome" matInput  #input (input)="input.value=$event.target.value.toUpperCase()" formControlName="nome" />
       </td>
     </tr>
     <tr>
