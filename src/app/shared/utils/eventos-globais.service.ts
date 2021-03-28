@@ -24,4 +24,5 @@ export enum NomeEvento {
   AbrirModalMsgConfirm = 'AbrirModalMsgConfirm',
   AtualizarListaClassificacao = 'AtualizarListaClassificacao',
   EditarClassificacao = 'EditarClassificacao',
+  ChamaClassificacao = 'ChamaClassificacao',
 }
