@@ -5,6 +5,7 @@ export class AtivoModel{
   idusuario:string;
   nome:string;
   quantidade:number;
+  valor:number;
   descricao:string;
   classificacao:ClassificacaoAtivoModel[]
 

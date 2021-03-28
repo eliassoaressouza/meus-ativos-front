@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AtivoService } from "src/app/core/http/ativo.service";
 import { AtivoModel } from "src/app/models/ativo.model";
+import { CotacaoModel } from "src/app/models/cotacao.model";
 import { DialogMsgService } from "src/app/shared/dialog-confirm/dialog-msg.service";
 import {
   EventosGlobaisService,
@@ -18,6 +19,7 @@ import { ClassificarAtivoService } from "../../classificar-ativo/classificar-ati
 })
 export class CardAtivoComponent implements OnInit {
   @Input() ativo: AtivoModel;
+  @Input() listaCotacao: CotacaoModel[];
   labelBotaoSalvar: string;
   ativoForm: FormGroup;
   constructor(

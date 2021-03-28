@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CotacaoService } from 'src/app/core/http/cotacao.service';
 import { AtivoModel } from 'src/app/models/ativo.model';
 
 @Component({
@@ -11,6 +12,8 @@ export class ListaCardAtivoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+
   }
 
 }
