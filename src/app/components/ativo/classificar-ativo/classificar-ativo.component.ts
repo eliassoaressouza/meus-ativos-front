@@ -8,7 +8,10 @@ import {
 } from "src/app/models/ativo.model";
 import { ClassificacaoModel } from "src/app/models/classificacao.model";
 import { DialogLayoutComponent } from "src/app/shared/dialog-confirm/dialog-confirm.component";
-import { EventosGlobaisService, NomeEvento } from "src/app/shared/utils/eventos-globais.service";
+import {
+  EventosGlobaisService,
+  NomeEvento,
+} from "src/app/shared/utils/eventos-globais.service";
 import { LoadingIconService } from "src/app/shared/utils/loading-icon.service";
 import { MensagemService } from "src/app/shared/utils/modais.service";
 
@@ -51,8 +54,9 @@ export class ClassificarAtivoComponent implements OnInit {
 
         //this.sele();
 
-
-        this.obterClassificacaoDoAtivo();
+        if (this.ativo.classificacao && this.ativo.classificacao.length) {
+          this.obterClassificacaoDoAtivo();
+        }
 
         //LoadingIconService.hide();
       },
@@ -63,9 +67,6 @@ export class ClassificarAtivoComponent implements OnInit {
     );
   }
   classificar() {
-
-    console.log("ativoclassificado!!!");
-
     this.ativo.classificacao = [];
     for (let index = 0; index < this.listaClassificacao.length; index++) {
       const classificacaoob = this.listaClassificacao[index];
@@ -73,12 +74,10 @@ export class ClassificarAtivoComponent implements OnInit {
         nome: classificacaoob.nome,
         tipo: this.classificacaoSelect[index].nome,
       });
-
     }
-    console.log(this.ativo);
+
     this.ativoService.editar(this.ativo).subscribe(
       (resp) => {
-
         LoadingIconService.hide();
         EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
         MensagemService.sucesso("Ativo Classificado com sucesso!");
