@@ -11,8 +11,14 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { TextMaskModule } from 'angular2-text-mask';
+import { AtivoClassificadoModule } from '../ativo-classificado/ativo-classificado.module';
+import { ClassificarAtivoComponent } from './classificar-ativo/classificar-ativo.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+
 @NgModule({
-  declarations: [  AtivoComponent,  ListaCardAtivoComponent, CardAtivoComponent ],
+  declarations: [  AtivoComponent,  ListaCardAtivoComponent, CardAtivoComponent, ClassificarAtivoComponent ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -23,8 +29,13 @@ import { TextMaskModule } from 'angular2-text-mask';
     MatExpansionModule,
     MatButtonModule,
     MatInputModule,
-    TextMaskModule
+    TextMaskModule,
+    AtivoClassificadoModule,
+    MatChipsModule,
+    MatDialogModule,
+    MatSelectModule
   ],
-  exports:[ AtivoComponent]
+  exports:[ AtivoComponent],
+  entryComponents:[ClassificarAtivoComponent]
 })
 export class AtivoModule { }

@@ -1,15 +1,26 @@
-<form [formGroup]="ativoForm" class="formCard" >
+<form [formGroup]="ativoForm" class="formCard">
   <table>
     <tr>
       <td>
         Nome:
-        <input class="inputNome" matInput  #input (input)="input.value=$event.target.value.toUpperCase()" formControlName="nome" />
+        <input
+          class="inputNome"
+          matInput
+          #input
+          (input)="input.value = $event.target.value.toUpperCase()"
+          formControlName="nome"
+        />
       </td>
     </tr>
     <tr>
       <td>
         Qtd:
-        <input class="inputnumber" matInput type="number" formControlName="quantidade" />
+        <input
+          class="inputnumber"
+          matInput
+          type="number"
+          formControlName="quantidade"
+        />
       </td>
     </tr>
     <tr>
@@ -47,6 +58,10 @@
         >
           Excluir
         </button>
+        <mat-chip *ngIf="ativo._id" color="primary" selected
+        (click)="chamaClassificacao(ativo)"
+          >classificação</mat-chip
+        >
       </td>
     </tr>
   </table>

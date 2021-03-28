@@ -9,6 +9,7 @@ import {
 } from "src/app/shared/utils/eventos-globais.service";
 import { LoadingIconService } from "src/app/shared/utils/loading-icon.service";
 import { MensagemService } from "src/app/shared/utils/modais.service";
+import { ClassificarAtivoService } from "../../classificar-ativo/classificar-ativo.service";
 
 @Component({
   selector: "card-ativo",
@@ -21,7 +22,8 @@ export class CardAtivoComponent implements OnInit {
   ativoForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private ativoService: AtivoService
+    private ativoService: AtivoService,
+    private classificarAtivoService:ClassificarAtivoService
   ) {}
 
   ngOnInit() {
@@ -114,5 +116,8 @@ export class CardAtivoComponent implements OnInit {
         LoadingIconService.hide();
       }
     );
+  }
+  chamaClassificacao(ativo){
+    this.classificarAtivoService.abrirDialog(ativo);
   }
 }

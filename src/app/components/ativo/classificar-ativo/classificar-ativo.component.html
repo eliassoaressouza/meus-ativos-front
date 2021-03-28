@@ -1,0 +1,29 @@
+<mat-dialog-content class="mat-typography"   *ngIf="classificacaoSelect&&classificacaoSelect.length" >
+  <p>Classificar: {{ ativo.nome }}</p>
+
+  <mat-form-field
+    appearance="fill"
+    *ngFor="let classi of listaClassificacao; let i = index"
+  >
+    <mat-label>{{ classi.nome }}</mat-label>
+    <mat-select [(ngModel)]="classificacaoSelect[i].nome">
+      <mat-option>Clear</mat-option>
+
+      <mat-option *ngFor="let tipo of classi.tipo" [value]="tipo">{{
+        tipo
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [mat-dialog-close]="true"
+    (click)="classificar()"
+    cdkFocusInitial
+  >
+    Confirmar
+  </button>
+</mat-dialog-actions>
