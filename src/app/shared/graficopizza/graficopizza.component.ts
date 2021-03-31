@@ -25,7 +25,12 @@ export class GraficopizzaComponent implements OnInit, AfterViewInit {
     ["Watch TV", 2],
     ["Sleep", 7],
   ];
-  ngOnInit() {}
+  ngOnInit() {
+    google.charts.load("current", { packages: ["corechart"] });
+
+    google.charts.setOnLoadCallback(this.drawChart);
+
+  }
   drawChart = () => {
     console.log('##########################################this.datain####################')
     console.log(this.datain)
@@ -46,9 +51,7 @@ export class GraficopizzaComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
 
-      google.charts.load("current", { packages: ["corechart"] });
 
-      google.charts.setOnLoadCallback(this.drawChart);
 
   }
 }
