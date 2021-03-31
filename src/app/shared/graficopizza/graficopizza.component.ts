@@ -25,7 +25,8 @@ export class GraficopizzaComponent implements OnInit, AfterViewInit{
 
     const options = {
       title: 'Classificacao',
-      legend: {position: 'top'}
+      legend: {position: 'top'},
+      dataType: "json"
     };
 
     const chart = new google.visualization.PieChart(this.pieChart.nativeElement);
