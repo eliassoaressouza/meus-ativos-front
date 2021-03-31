@@ -16,6 +16,8 @@ export class GraficoPizzaService {
    *
    */
   static GerrarArray(listaAtivos: AtivoModel[]) {
+    console.log("listaAtivos");
+    console.log(listaAtivos);
     let arrayresp = [];
     arrayresp.push(["classificacao", "valor"]);
 
@@ -26,21 +28,20 @@ export class GraficoPizzaService {
         arrayclassificacao.push(element);
       });
     });
-    let jainclusos=[];
+    let jainclusos = [];
     arrayclassificacao.forEach((cl) => {
       let arraydados = this.Gerar(listaAtivos, "Setor", cl.tipo);
 
-      let resp = jainclusos.filter(j=>j==arraydados[0])
+      let resp = jainclusos.filter((j) => j == arraydados[0]);
 
-      if (arraydados[1] != 0&&!resp.length) {
+      if (arraydados[1] != 0 && !resp.length) {
         arrayresp.push(arraydados);
-        jainclusos.push( arraydados[0]);
+        jainclusos.push(arraydados[0]);
       }
-
     });
 
-
-
+    console.log("arrayresp");
+    console.log(arrayresp);
     return arrayresp;
   }
 
@@ -52,8 +53,8 @@ export class GraficoPizzaService {
       let ativoselecionado = ativo.classificacao.find(
         (c) => c.nome == classinome && c.tipo == classitipo
       );
-      if (ativoselecionado&&ativo.valor) {
-        soma+=ativo.valor;
+      if (ativoselecionado && ativo.valor) {
+        soma += ativo.valor;
       }
     });
     return [classinome + " " + classitipo, soma];

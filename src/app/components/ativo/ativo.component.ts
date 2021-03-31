@@ -73,14 +73,7 @@ export class AtivoComponent implements OnInit {
   }
 
   GerarGraficoAtivos() {
-    this.dataGrafico = [
-      ["classificacao", "valor"],
-      ["Work", 11],
-      ["Eat", 2],
-      ["Commute", 2],
-      ["Watch TV", 2],
-      ["Sleep", 7],
-    ];
+
     this.dataGrafico=GraficoPizzaService.GerrarArray(this.listaAtivos);
   }
 }
