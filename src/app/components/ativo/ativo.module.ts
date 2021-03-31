@@ -16,6 +16,7 @@ import { ClassificarAtivoComponent } from './classificar-ativo/classificar-ativo
 import {MatChipsModule} from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import { GraficopizzaModule } from 'src/app/shared/graficopizza/graficopizza.module';
 
 @NgModule({
   declarations: [  AtivoComponent,  ListaCardAtivoComponent, CardAtivoComponent, ClassificarAtivoComponent ],
@@ -33,7 +34,8 @@ import {MatSelectModule} from '@angular/material/select';
     AtivoClassificadoModule,
     MatChipsModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    GraficopizzaModule
   ],
   exports:[ AtivoComponent],
   entryComponents:[ClassificarAtivoComponent]

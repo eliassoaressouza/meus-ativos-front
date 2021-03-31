@@ -1,7 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import { AtivoService } from "src/app/core/http/ativo.service";
 import { CotacaoService } from "src/app/core/http/cotacao.service";
 import { AtivoModel } from "src/app/models/ativo.model";
+import { GraficoPizzaService } from "src/app/shared/graficopizza/graficopizza.service";
+import { Calculo } from "src/app/shared/utils/calculo";
 import {
   EventosGlobaisService,
   NomeEvento,
@@ -15,6 +23,9 @@ import { LoadingIconService } from "src/app/shared/utils/loading-icon.service";
 })
 export class AtivoComponent implements OnInit {
   public listaAtivos: AtivoModel[] = [];
+  public valortotal: any;
+  dataGrafico: any;
+
   constructor(
     private ativoService: AtivoService,
     private cotacaoService: CotacaoService
@@ -53,6 +64,23 @@ export class AtivoComponent implements OnInit {
             Number(cotacao.Cotacao.replace("R$", "").trim().replace(",", "."));
         }
       });
+      this.Calcular();
+      this.GerarGraficoAtivos();
     });
+  }
+  Calcular() {
+    this.valortotal = Calculo.obterValorTotal(this.listaAtivos);
+  }
+
+  GerarGraficoAtivos() {
+    this.dataGrafico = [
+      ["classificacao", "valor"],
+      ["Work", 11],
+      ["Eat", 2],
+      ["Commute", 2],
+      ["Watch TV", 2],
+      ["Sleep", 7],
+    ];
+    this.dataGrafico=GraficoPizzaService.GerrarArray(this.listaAtivos);
   }
 }

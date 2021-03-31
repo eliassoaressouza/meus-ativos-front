@@ -8,7 +8,10 @@ import { PaginasModule } from "./paginas/paginas.module";
 import { HttpClientModule } from "@angular/common/http";
 import { DialogConfirmModule } from "./shared/dialog-confirm/dialog-confirm.module";
 import { ClassificacaoModule } from "./components/classificacao/classificacao.module";
-
+import {LOCALE_ID} from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+registerLocaleData(localePt, 'pt');
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -20,7 +23,10 @@ import { ClassificacaoModule } from "./components/classificacao/classificacao.mo
     HttpClientModule,
     ClassificacaoModule
   ],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'pt-BR'
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
