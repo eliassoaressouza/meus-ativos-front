@@ -3,4 +3,4 @@
   <lista-card-ativo [listaAtivos]="listaAtivos"> </lista-card-ativo>
 </div>
 
-<graficopizza  [datain]="dataGrafico"  ></graficopizza>
+<graficopizza *ngIf="dataGrafico"  [datain]="dataGrafico"  ></graficopizza>
