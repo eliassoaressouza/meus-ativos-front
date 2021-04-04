@@ -1,6 +1,33 @@
-.arealista{
+.arealista {
   height: 500px;
   width: 100%;
   overflow-y: scroll;
+}
+.area-tabela-grafico {
+  width: 100%;
+  display: table;
+  text-align: left;
+  margin: 0 0 0 10px;
   border:  1px solid #ccc;
 }
+
+.arealistaTabela {
+  width: 58%;
+  height: 800px;
+  overflow-y: scroll;
+
+  float: left;
+}
+.areagrafico {
+  width: 40%px;
+  height: 370px;
+
+  float: left;
+}
+.areavalores {
+  width: 300px;
+  height: 40px;
+  padding: 3px;
+  float: left;
+}
+

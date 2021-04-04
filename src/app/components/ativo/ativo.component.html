@@ -1,6 +1,16 @@
-<p>Valor total: {{valortotal|currency:'BRL':true}}</p>
-<div class="arealista">
+<div *ngIf="false" class="arealista">
   <lista-card-ativo [listaAtivos]="listaAtivos"> </lista-card-ativo>
 </div>
 
-<graficopizza *ngIf="dataGrafico"  [datain]="dataGrafico"  ></graficopizza>
+<div class="area-tabela-grafico">
+  <div class="arealistaTabela">
+    <lista-tabela-ativo [listaAtivos]="listaAtivos"> </lista-tabela-ativo>
+  </div>
+
+  <div class="areagrafico">
+    <graficopizza *ngIf="dataGrafico" [datain]="dataGrafico"></graficopizza>
+  </div>
+  <div class="areavalores">
+    <p>Valor total: {{ valortotal | currency: "BRL":true }}</p>
+  </div>
+</div>

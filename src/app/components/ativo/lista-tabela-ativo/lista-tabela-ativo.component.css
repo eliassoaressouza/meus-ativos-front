@@ -1,0 +1,19 @@
+table {
+  width: 900px;
+}
+.coluna-geral {
+  padding: 0 2px 0 2px;
+}
+.mat-column-quantidade {
+  width: 6px;
+  padding: 0 5px 0 15px;
+  margin-left: 5px;
+}
+.coluna-descricao{
+  text-align: left;
+
+
+}
+.coluna-descricao textarea{
+  margin: 0px; width: 181px; height: 80px;
+}

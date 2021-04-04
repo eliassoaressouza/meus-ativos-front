@@ -1,0 +1,94 @@
+<button
+type="button"
+class="btn-salvar"
+(click)="Salvar()"
+mat-raised-button
+color="primary"
+>
+Salvar novo Ativo
+</button>
+<table
+  mat-table
+  [dataSource]="listaAtivos"
+  class="tabela-container mat-elevation-z8"
+>
+  <ng-container matColumnDef="nome" >
+    <th mat-header-cell *matHeaderCellDef>Nome</th>
+    <td mat-cell *matCellDef="let ativo" class="coluna-geral"  >{{ ativo.nome }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="quantidade" class="mat-column-quantidade " >
+    <th mat-header-cell *matHeaderCellDef>Quantidade</th>
+    <td mat-cell *matCellDef="let ativo" class="coluna-geral"  >{{ ativo.quantidade }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="valor"  >
+    <th mat-header-cell *matHeaderCellDef>Valor</th>
+    <td mat-cell *matCellDef="let ativo" class="coluna-geral" >
+      {{ ativo.valor | currency: "BRL":true }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="descricao" >
+    <th mat-header-cell *matHeaderCellDef>Descrição</th>
+    <td mat-cell *matCellDef="let ativo" class="coluna-geral coluna-descricao" >
+      <textarea class="txt-descricao" matInput rows="2" cols="17">
+        {{ ativo.descricao }}
+        </textarea
+      >
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="classificacao" >
+    <th mat-header-cell *matHeaderCellDef>Classificação</th>
+    <td mat-cell *matCellDef="let ativo" class="coluna-geral" >
+      <div *ngFor="let classificacao of ativo.classificacao">
+        <ul>
+          <li>{{ classificacao.nome }}</li>
+          <li>{{ classificacao.tipo }}</li>
+        </ul>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="alterar" >
+    <th mat-header-cell *matHeaderCellDef>Alterar</th>
+    <td mat-cell *matCellDef="let ativo" class="coluna-geral" >
+      <button
+        type="button"
+        class="btn-salvar"
+        (click)="Alterar(ativo)"
+        mat-raised-button
+        color="primary">
+        Alterar
+      </button>
+    </td></ng-container>
+    <ng-container matColumnDef="excluir"  >
+      <th mat-header-cell *matHeaderCellDef>Excluir</th>
+      <td mat-cell *matCellDef="let ativo" class="coluna-geral" >
+        <button
+          type="button"
+          class="btn-salvar"
+          (click)="Excluir(ativo)"
+          mat-raised-button
+          color="warn">
+          Excluir
+        </button>
+      </td></ng-container>
+      <ng-container matColumnDef="classificar" >
+        <th mat-header-cell *matHeaderCellDef>Classificar</th>
+        <td mat-cell *matCellDef="let ativo" class="coluna-geral" >
+          <button
+            type="button"
+            class="btn-salvar"
+            (click)="Classificar(ativo)"
+            mat-raised-button
+            color="primary">
+            Classificar
+          </button>
+        </td></ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let ativo; columns: displayedColumns"></tr>
+</table>
+

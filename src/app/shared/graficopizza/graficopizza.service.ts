@@ -34,6 +34,7 @@ export class GraficoPizzaService {
 
       let resp = jainclusos.filter((j) => j == arraydados[0]);
 
+
       if (arraydados[1] != 0 && !resp.length) {
         arrayresp.push(arraydados);
         jainclusos.push(arraydados[0]);
