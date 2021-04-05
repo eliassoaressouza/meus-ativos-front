@@ -16,16 +16,16 @@ import { MensagemService } from "src/app/shared/utils/modais.service";
   styleUrls: ["./ativo-form.component.css"],
 })
 export class AtivoFormComponent implements OnInit {
- ativo: AtivoModel;
+  ativo: AtivoModel;
   ativoForm: FormGroup;
   labelBotaoSalvar: string;
+  listaAtivos: AtivoModel[];
   constructor(
     private formBuilder: FormBuilder,
     private ativoService: AtivoService,
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.ativo = data.ativo;
-
   }
 
   ngOnInit() {
@@ -36,6 +36,7 @@ export class AtivoFormComponent implements OnInit {
       _id: [this.ativo._id],
     });
     this.labelBotaoSalvar = this.ativo._id ? "Editar" : "Salvar";
+    this.obterLista() ;
   }
   SalvarAdicionar() {
     let ativoSalvar = new AtivoModel();
@@ -59,21 +60,43 @@ export class AtivoFormComponent implements OnInit {
           }
         );
       } else {
-        this.ativoService.salvar(ativoSalvar).subscribe(
-          (resp) => {
-            LoadingIconService.hide();
-            this.ativoForm.reset();
-            EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
-            MensagemService.sucesso("Ativo Salvo com sucesso!");
-          },
-          (error) => {
-            console.log(error);
-            LoadingIconService.hide();
-          }
-        );
+        if (
+          this.listaAtivos&&
+          this.listaAtivos.length &&
+          this.listaAtivos.find((a) => a.nome == ativoSalvar.nome)
+        ) {
+          LoadingIconService.hide();
+          MensagemService.erro("Ja possue ativo cadastrado com o nome: "+ativoSalvar.nome);
+        } else {
+          this.ativoService.salvar(ativoSalvar).subscribe(
+            (resp) => {
+              LoadingIconService.hide();
+              this.ativoForm.reset();
+              EventosGlobaisService.get(NomeEvento.AtualizarListaAtivos).emit();
+              MensagemService.sucesso("Ativo Salvo com sucesso!");
+            },
+            (error) => {
+              console.log(error);
+              LoadingIconService.hide();
+            }
+          );
+        }
       }
     } else {
       MensagemService.erro("Obrigatório nome ativo!");
     }
+  }
+  obterLista() {
+    LoadingIconService.show();
+    this.ativoService.obter().subscribe(
+      (resp) => {
+        this.listaAtivos = resp;
+
+        LoadingIconService.hide();
+      },
+      (erro) => {
+        LoadingIconService.hide();
+      }
+    );
   }
 }

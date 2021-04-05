@@ -4,7 +4,7 @@ import { CotacaoService } from "src/app/core/http/cotacao.service";
 import { CotacaoModel } from "src/app/models/cotacao.model";
 import { MensagemService } from "src/app/shared/utils/modais.service";
 import { MatPaginator } from "@angular/material/paginator";
-
+import * as _ from 'underscore';
 @Component({
   selector: "app-cotacao",
   templateUrl: "./cotacao.component.html",
@@ -24,6 +24,7 @@ export class CotacaoComponent implements OnInit {
   }
   listarCotacao() {
     this.cotacaoService.obter().subscribe((lista) => {
+      lista=_.sortBy(lista,c=>c.Ativo);
       this.listaCotacao = lista;
       this.dataSource = new MatTableDataSource<CotacaoModel>(this.listaCotacao);
       this.dataSource.paginator = this.paginator;

@@ -1,9 +1,6 @@
 import {
-  AfterViewInit,
   Component,
-  ElementRef,
   OnInit,
-  ViewChild,
 } from "@angular/core";
 import { AtivoService } from "src/app/core/http/ativo.service";
 import { CotacaoService } from "src/app/core/http/cotacao.service";
@@ -15,7 +12,7 @@ import {
   NomeEvento,
 } from "src/app/shared/utils/eventos-globais.service";
 import { LoadingIconService } from "src/app/shared/utils/loading-icon.service";
-
+import * as _ from 'underscore';
 @Component({
   selector: "ativo",
   templateUrl: "./ativo.component.html",
@@ -44,6 +41,7 @@ export class AtivoComponent implements OnInit {
     LoadingIconService.show();
     this.ativoService.obter().subscribe(
       (resp) => {
+        resp=_.sortBy(resp,e=>e.nome);
         this.IncluirCotacao(resp);
         this.listaAtivos = resp;
 
