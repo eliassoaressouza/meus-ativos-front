@@ -1,0 +1,17 @@
+.cotacao-tudo{
+  margin: 5px;
+}
+.textarea-cotacao {
+  width: 30%;
+  float: left;
+  border: 1px solid #ccc;
+}
+
+.img-google {
+  width: 30%;
+  float: left;
+}
+.btnsalvar-listar {
+  clear: both;
+  width: 50%;
+}

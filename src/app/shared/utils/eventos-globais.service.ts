@@ -25,4 +25,5 @@ export enum NomeEvento {
   AtualizarListaClassificacao = 'AtualizarListaClassificacao',
   EditarClassificacao = 'EditarClassificacao',
   ChamaClassificacao = 'ChamaClassificacao',
+  GerarGraficoAtivos='GerarGraficoAtivos'
 }

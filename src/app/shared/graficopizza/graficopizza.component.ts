@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   Input,
@@ -7,13 +6,12 @@ import {
   ViewChild,
 } from "@angular/core";
 declare var google: any;
-import * as $ from "jquery";
 @Component({
   selector: "graficopizza",
   templateUrl: "./graficopizza.component.html",
   styleUrls: ["./graficopizza.component.css"],
 })
-export class GraficopizzaComponent implements OnInit, AfterViewInit {
+export class GraficopizzaComponent implements OnInit {
   @ViewChild("pieChart", { static: false }) pieChart: ElementRef;
   constructor() {}
 
@@ -27,30 +25,18 @@ export class GraficopizzaComponent implements OnInit, AfterViewInit {
   ];
   ngOnInit() {
     google.charts.load("current", { packages: ["corechart"] });
-
     google.charts.setOnLoadCallback(this.drawChart);
-
   }
   drawChart = () => {
-
     const data = google.visualization.arrayToDataTable(JSON.parse(JSON.stringify(this.datain)));
-
     const options = {
       title: "Classificacao",
       legend: { position: "top" },
       dataType: "json",
     };
-
     const chart = new google.visualization.PieChart(
       this.pieChart.nativeElement
     );
-
     chart.draw(data, options);
   };
-
-  ngAfterViewInit() {
-
-
-
-  }
 }

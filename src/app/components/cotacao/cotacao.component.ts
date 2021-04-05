@@ -1,7 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { MatTableDataSource } from "@angular/material";
 import { CotacaoService } from "src/app/core/http/cotacao.service";
 import { CotacaoModel } from "src/app/models/cotacao.model";
 import { MensagemService } from "src/app/shared/utils/modais.service";
+import { MatPaginator } from "@angular/material/paginator";
 
 @Component({
   selector: "app-cotacao",
@@ -11,6 +13,10 @@ import { MensagemService } from "src/app/shared/utils/modais.service";
 export class CotacaoComponent implements OnInit {
   cotacaomodel: string;
   listaCotacao: CotacaoModel[] = [];
+  displayedColumns: string[] = ["Ativo", "Cotacao"];
+  dataSource: MatTableDataSource<CotacaoModel>;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+
   constructor(private cotacaoService: CotacaoService) {}
 
   ngOnInit() {
@@ -19,6 +25,8 @@ export class CotacaoComponent implements OnInit {
   listarCotacao() {
     this.cotacaoService.obter().subscribe((lista) => {
       this.listaCotacao = lista;
+      this.dataSource = new MatTableDataSource<CotacaoModel>(this.listaCotacao);
+      this.dataSource.paginator = this.paginator;
     });
   }
   Importar() {
