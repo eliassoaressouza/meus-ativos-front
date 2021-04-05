@@ -16,8 +16,7 @@ export class GraficoPizzaService {
    *
    */
   static GerrarArray(listaAtivos: AtivoModel[]) {
-    console.log("listaAtivos");
-    console.log(listaAtivos);
+
     let arrayresp = [];
     arrayresp.push(["classificacao", "valor"]);
 
@@ -41,8 +40,7 @@ export class GraficoPizzaService {
       }
     });
 
-    console.log("arrayresp");
-    console.log(arrayresp);
+
     return arrayresp;
   }
 

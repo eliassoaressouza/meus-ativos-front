@@ -1,0 +1,27 @@
+<textarea
+  matInput
+  name="cotacaomodel"
+  [(ngModel)]="cotacaomodel"
+  rows="20"
+  cols="200"
+>
+</textarea>
+<br>
+
+<button
+  type="button"
+  class="btn-salvar"
+  (click)="Importar()"
+  mat-raised-button
+  color="primary"
+>
+  Importar
+</button>
+<br>
+<br>
+<table border="2" >
+  <tr  *ngFor="let cotacao of listaCotacao" >
+    <td>{{cotacao.Ativo}}</td>
+    <td>{{cotacao.Cotacao}}</td>
+  </tr>
+</table>

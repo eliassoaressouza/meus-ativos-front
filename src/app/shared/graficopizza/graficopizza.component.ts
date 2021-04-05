@@ -32,8 +32,7 @@ export class GraficopizzaComponent implements OnInit, AfterViewInit {
 
   }
   drawChart = () => {
-    console.log('##########################################this.datain####################')
-    console.log(this.datain)
+
     const data = google.visualization.arrayToDataTable(JSON.parse(JSON.stringify(this.datain)));
 
     const options = {

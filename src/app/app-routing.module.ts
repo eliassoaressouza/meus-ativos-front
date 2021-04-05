@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ClassificacaoComponent } from "./components/classificacao/classificacao.component";
+import { CotacaoComponent } from "./components/cotacao/cotacao.component";
 import { AuthGuard } from "./core/auth/auth.guard";
 import { HomeComponent } from "./paginas/home/home.component";
 import { LoginComponent } from "./paginas/login/login.component";
@@ -27,6 +28,11 @@ const routes: Routes = [
         component: ClassificacaoComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: "cotacao",
+        component: CotacaoComponent,
+        canActivate: [AuthGuard],
+      }
     ],
   },
 ];

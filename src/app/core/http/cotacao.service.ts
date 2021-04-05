@@ -17,6 +17,10 @@ public obter(): Observable<CotacaoModel[]> {
   this.createHeaders();
   return this.http.get<CotacaoModel[]>(environment.apiUrl + "/cotacao/obter",this.httpOptions);
 }
+public salvareditar( listaCotacao: CotacaoModel[]): Observable<CotacaoModel[]> {
+  this.createHeaders();
+  return this.http.post<CotacaoModel[]>(environment.apiUrl + "/cotacao/salvareditar", listaCotacao,this.httpOptions);
+}
 
 
 }

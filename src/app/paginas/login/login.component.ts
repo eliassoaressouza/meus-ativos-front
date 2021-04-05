@@ -2,7 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/core/auth/auth.service";
+import { CotacaoService } from "src/app/core/http/cotacao.service";
 import { TokenService } from "src/app/core/token/token.service";
+import { CotacaoModel } from "src/app/models/cotacao.model";
 import { UsuarioModel } from "src/app/models/usuario.model";
 import { ProgressService } from "src/app/shared/progress/progress.service";
 import { LoadingIconService } from "src/app/shared/utils/loading-icon.service";
@@ -20,7 +22,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private tokenService:TokenService
+    private tokenService:TokenService,
+
   ) {}
 
   ngOnInit() {
@@ -29,6 +32,7 @@ export class LoginComponent implements OnInit {
       usuario: ["", Validators.required],
       senha: ["", Validators.required],
     });
+
   }
   login() {
     LoadingIconService.show();

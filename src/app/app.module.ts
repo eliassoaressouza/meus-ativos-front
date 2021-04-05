@@ -11,6 +11,7 @@ import { ClassificacaoModule } from "./components/classificacao/classificacao.mo
 import {LOCALE_ID} from '@angular/core';
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
+import { CotacaoModule } from "./components/cotacao/cotacao.module";
 registerLocaleData(localePt, 'pt');
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ registerLocaleData(localePt, 'pt');
     DialogConfirmModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ClassificacaoModule
+    ClassificacaoModule,
+    CotacaoModule
   ],
   providers: [{
     provide: LOCALE_ID,

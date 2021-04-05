@@ -26,6 +26,7 @@ Salvar novo Ativo
     <th mat-header-cell *matHeaderCellDef>Valor</th>
     <td mat-cell *matCellDef="let ativo" class="coluna-geral" >
       {{ ativo.valor | currency: "BRL":true }}
+      <span *ngIf="!ativo.valor" >Tem que cadastrar quantidade ou verifique o serviço de cotação</span>
     </td>
   </ng-container>
 
